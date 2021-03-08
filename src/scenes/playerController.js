@@ -4,6 +4,7 @@ import { events } from './eventEmitter'
 
 export default class PlayerController {
   constructor(scene, sprite = Phaser.Physics.Matter.Sprite, cursors, obstacles) {
+    this.health = 100
     this.sprite = sprite
     this.cursors = cursors
     this.obstacles = obstacles
@@ -18,6 +19,7 @@ export default class PlayerController {
       .setState('idle')
 
     this.sprite.setOnCollide((data) => {
+      let _a
       const body = data.bodyB
       if (this.obstacles.is('spikes', body)) {
         this.stateMachine.setState('spike-hit')
@@ -39,6 +41,14 @@ export default class PlayerController {
 
       if (type === 'cherry') {
         events.emit('cherry-collected')
+        sprite.destroy()
+      }
+
+      if (type === 'health') {
+        const value = (_a = sprite.getData('healthValue')) !== null && _a !== void 0 ? _a : 10
+        this.health = Phaser.Math.Clamp(this.health + value, 0, 100)
+        events.emit('health-changed', this.health)
+        console.log(this.health)
         sprite.destroy()
       }
     })
@@ -107,6 +117,9 @@ export default class PlayerController {
 
   spikeHitOnEnter() {
     this.sprite.setVelocityY(-12)
+    this.health = Phaser.Math.Clamp(this.health - 10, 0, 100)
+    events.emit('health-changed', this.health)
+    console.log(this.health)
     const startColor = Phaser.Display.Color.ValueToColor(0xffffff)
     const endColor = Phaser.Display.Color.ValueToColor(0xff0000)
     this.scene.tweens.addCounter({
