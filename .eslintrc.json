@@ -14,10 +14,15 @@
     "no-shadow": "off",
     "no-param-reassign": "off",
     "eol-last": "off",
-    "arrow-parens": "off"
+    "arrow-parens": "off",
+    "no-void": "off",
+    "no-underscore-dangle":"off",
+    "no-cond-assign": "off"
   },
   "ignorePatterns": [
     "dist/",
-    "build/"
+    "build/",
+    "pwa/",
+    "webpack/"
   ]
 }
