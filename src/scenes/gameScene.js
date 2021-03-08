@@ -38,7 +38,7 @@ export default class Game extends Phaser.Scene {
           .setScale(0.3)
           .setFixedRotation()
 
-        this.playerController = new PlayerController(this.kim, this.cursors, this.obstacles)
+        this.playerController = new PlayerController(this, this.kim, this.cursors, this.obstacles)
 
         this.cameras.main.startFollow(this.kim)
       }
