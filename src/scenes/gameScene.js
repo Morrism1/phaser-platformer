@@ -16,6 +16,7 @@ export default class Game extends Phaser.Scene {
   preload() {
     this.load.atlas('kim', 'assets/kim.png', 'assets/kim.json')
     this.load.image('tiles', 'assets/sheet.png')
+    this.load.image('health', 'assets/health.png')
     this.load.tilemapTiledJSON('tilemap', 'assets/iceMap.json')
 
     this.load.image('cherry', 'assets/cherry.png')
@@ -52,6 +53,16 @@ export default class Game extends Phaser.Scene {
           .setFixedRotation()
 
         cherry.setData('type', 'cherry')
+      }
+
+      if (name === 'health') {
+        const health = this.matter.add.sprite(x, y, 'health', undefined, {
+          isStatic: true,
+          isSensor: true,
+        })
+
+        health.setData('type', 'health')
+        health.setData('healthValue', 10)
       }
 
       if (name === 'spikes') {
