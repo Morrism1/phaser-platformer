@@ -1,8 +1,8 @@
-const path = require('path')
-const { merge } = require('webpack-merge')
-const common = require('./webpack.common')
-const WebpackObfuscator = require('webpack-obfuscator')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const path = require('path');
+const { merge } = require('webpack-merge');
+const WebpackObfuscator = require('webpack-obfuscator');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const common = require('./webpack.common');
 
 const prod = {
   mode: 'production',
@@ -28,9 +28,9 @@ const prod = {
         // stringArrayEncoding: 'base64', // disabled by default
         stringArrayThreshold: 0.75,
       },
-      ['vendors.*.js']
+      ['vendors.*.js'],
     ),
   ],
-}
+};
 
-module.exports = merge(common, prod)
+module.exports = merge(common, prod);
