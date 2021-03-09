@@ -16,6 +16,9 @@ export default class PlayerController {
       .addState('walk', { onEnter: this.walkOnEnter, onUpdate: this.walkOnUpdate })
       .addState('jump', { onEnter: this.jumpOnEnter, onUpdate: this.jumpOnUpdate })
       .addState('spike-hit', { onEnter: this.spikeHitOnEnter })
+      .addState('dead', {
+        onEnter: this.deadOnEnter,
+      })
       .setState('idle')
 
     this.sprite.setOnCollide((data) => {
@@ -48,7 +51,6 @@ export default class PlayerController {
         const value = (_a = sprite.getData('healthValue')) !== null && _a !== void 0 ? _a : 10
         this.health = Phaser.Math.Clamp(this.health + value, 0, 100)
         events.emit('health-changed', this.health)
-        console.log(this.health)
         sprite.destroy()
       }
     })
@@ -56,6 +58,23 @@ export default class PlayerController {
 
   update(dt) {
     this.stateMachine.update(dt)
+  }
+
+  setHealth(value) {
+    this.health = Phaser.Math.Clamp(value, 0, 100)
+    events.emit('health-changed', this.health)
+
+    if (this.health <= 0) {
+      this.stateMachine.setState('dead')
+    }
+  }
+
+  deadOnEnter() {
+    this.sprite.play('player-die')
+    this.sprite.setOnCollide(() => {})
+    // this.scene.time.delayedCall(1500, () => {
+    //   this.scene.scene.start('game-over')
+    // })
   }
 
   idleOnEnter() {
@@ -117,9 +136,6 @@ export default class PlayerController {
 
   spikeHitOnEnter() {
     this.sprite.setVelocityY(-12)
-    this.health = Phaser.Math.Clamp(this.health - 10, 0, 100)
-    events.emit('health-changed', this.health)
-    console.log(this.health)
     const startColor = Phaser.Display.Color.ValueToColor(0xffffff)
     const endColor = Phaser.Display.Color.ValueToColor(0xff0000)
     this.scene.tweens.addCounter({
@@ -143,6 +159,7 @@ export default class PlayerController {
     })
 
     this.stateMachine.setState('idle')
+    this.setHealth(this.health - 10)
   }
 
   createAnimations() {
@@ -161,6 +178,17 @@ export default class PlayerController {
         suffix: '.png',
       }),
       repeat: -1,
+    })
+
+    this.sprite.anims.create({
+      key: 'player-die',
+      frames: this.sprite.anims.generateFrameNames('kim', {
+        start: 2,
+        end: 4,
+        prefix: 'player_run_',
+        suffix: '.png',
+      }),
+      frameRate: 10,
     })
   }
 }
