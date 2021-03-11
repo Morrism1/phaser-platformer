@@ -5,7 +5,11 @@ export default class BootScene extends Phaser.Scene {
     super('boot')
   }
 
-  preload() {}
+  preload() {
+    this.load.image('logo', 'assets/kimLogo.png')
+  }
 
-  create() {}
+  create() {
+    this.scene.start('input')
+  }
 }
