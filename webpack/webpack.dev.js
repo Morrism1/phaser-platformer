@@ -1,5 +1,6 @@
-const { merge } = require('webpack-merge');
-const common = require('./webpack.common');
+// @ts-nocheck
+const { merge } = require('webpack-merge')
+const common = require('./webpack.common')
 
 const dev = {
   mode: 'development',
@@ -9,6 +10,6 @@ const dev = {
     contentBase: './dist',
     hot: true,
   },
-};
+}
 
-module.exports = merge(common, dev);
+module.exports = merge(common, dev)
