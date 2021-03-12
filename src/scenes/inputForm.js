@@ -1,12 +1,12 @@
-import { Scene } from 'phaser'
+import { Scene } from 'phaser';
 
 export default class InputForm extends Scene {
   constructor() {
-    super('input')
+    super('input');
   }
 
   preload() {
-    this.load.html('form', 'assets/form.html')
+    this.load.html('form', 'assets/form.html');
   }
 
   create() {
@@ -14,18 +14,18 @@ export default class InputForm extends Scene {
       color: 'white',
       fontFamily: 'Arial',
       fontSize: '32px ',
-    })
+    });
     const element = this.add
       .dom(this.scale.width * 0.5, this.scale.height * 0.5)
-      .createFromCache('form')
+      .createFromCache('form');
 
-    element.addListener('click')
+    element.addListener('click');
     element.on('click', function ({ target }) {
       if (target.name === 'loginButton') {
-        const inputUsername = this.getChildByName('username')
+        const inputUsername = this.getChildByName('username');
 
         if (inputUsername.value !== '') {
-          this.removeListener('click')
+          this.removeListener('click');
 
           this.scene.tweens.add({
             targets: element.rotate3d,
@@ -33,7 +33,7 @@ export default class InputForm extends Scene {
             w: 90,
             duration: 3000,
             ease: 'Power3',
-          })
+          });
 
           this.scene.tweens.add({
             targets: element,
@@ -43,15 +43,15 @@ export default class InputForm extends Scene {
             duration: 3000,
             ease: 'Power3',
             onComplete() {
-              element.setVisible(false)
+              element.setVisible(false);
             },
-          })
+          });
 
-          const userName = inputUsername.value
+          const userName = inputUsername.value;
 
-          localStorage.setItem('userName', JSON.stringify(userName))
+          localStorage.setItem('userName', JSON.stringify(userName));
 
-          this.scene.scene.start('preloader')
+          this.scene.scene.start('preloader');
         } else {
           this.scene.tweens.add({
             targets: text,
@@ -59,16 +59,16 @@ export default class InputForm extends Scene {
             duration: 200,
             ease: 'Power3',
             yoyo: true,
-          })
+          });
         }
       }
-    })
+    });
 
     this.tweens.add({
       targets: element,
       y: 300,
       duration: 3000,
       ease: 'Power3',
-    })
+    });
   }
 }

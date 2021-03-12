@@ -1,21 +1,21 @@
-import { postData, getData } from '../src/api/data'
-import axios from 'axios'
+import axios from 'axios';
+import { postData, getData } from '../src/api/data';
 
-jest.mock('axios')
+jest.mock('axios');
 
 test('should post the data of the user', async () => {
-  const data = { data: { result: 'LeaderBoard created!' } }
-  axios.post.mockResolvedValue(data)
-  const res = await postData('morris', 100)
-  expect(res).toEqual('LeaderBoard created!')
-})
+  const data = { data: { result: 'LeaderBoard created!' } };
+  axios.post.mockResolvedValue(data);
+  const res = await postData('morris', 100);
+  expect(res).toEqual('LeaderBoard created!');
+});
 
 test('should throw an error message when no arguments are passed', async () => {
-  const data = { data: { result: 'Provided  valid arguments' } }
-  axios.post.mockResolvedValue(data)
-  const res = await postData()
-  expect(res).toEqual('Provided  valid arguments')
-})
+  const data = { data: { result: 'Provided  valid arguments' } };
+  axios.post.mockResolvedValue(data);
+  const res = await postData();
+  expect(res).toEqual('Provided  valid arguments');
+});
 
 test('should fetch the results of the leaderboard', async () => {
   const data = {
@@ -25,12 +25,12 @@ test('should fetch the results of the leaderboard', async () => {
         { user: 'Ghosh', score: 234 },
       ],
     },
-  }
+  };
 
-  axios.get.mockResolvedValue(data)
-  const res = await getData()
-  expect(res).toBeInstanceOf(Array)
-})
+  axios.get.mockResolvedValue(data);
+  const res = await getData();
+  expect(res).toBeInstanceOf(Array);
+});
 
 test('Get the lenght of the results from fetched data', async () => {
   const data = {
@@ -40,9 +40,9 @@ test('Get the lenght of the results from fetched data', async () => {
         { user: 'Ghosh', score: 234 },
       ],
     },
-  }
+  };
 
-  axios.get.mockResolvedValue(data)
-  const res = await getData()
-  expect(res.length).toEqual(2)
-})
+  axios.get.mockResolvedValue(data);
+  const res = await getData();
+  expect(res.length).toEqual(2);
+});
