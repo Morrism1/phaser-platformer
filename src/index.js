@@ -1,17 +1,17 @@
 // @ts-nocheck
-import Phaser from 'phaser'
-import ScoreLabel from './scenes/scoreLabel'
-import Game from './scenes/gameScene'
-import GameOver from './scenes/gameOver'
-import BootScene from './scenes/bootScene'
-import CreditsScene from './scenes/creditsScene'
-import PreloadScene from './scenes/preloadScene'
-import TitleScene from './scenes/titleScene'
-import InputForm from './scenes/inputForm'
-import LeaderboardScene from './scenes/leaderboardScene'
+import Phaser from 'phaser';
+import ScoreLabel from './scenes/scoreLabel';
+import Game from './scenes/gameScene';
+import GameOver from './scenes/gameOver';
+import BootScene from './scenes/bootScene';
+import CreditsScene from './scenes/creditsScene';
+import PreloadScene from './scenes/preloadScene';
+import TitleScene from './scenes/titleScene';
+import InputForm from './scenes/inputForm';
+import LeaderboardScene from './scenes/leaderboardScene';
 
-const DEFAULT_WIDTH = 1200
-const DEFAULT_HEIGHT = 800
+const DEFAULT_WIDTH = 1200;
+const DEFAULT_HEIGHT = 800;
 
 const config = {
   type: Phaser.AUTO,
@@ -40,6 +40,6 @@ const config = {
       debug: false,
     },
   },
-}
+};
 
-window.game = new Phaser.Game(config)
+window.game = new Phaser.Game(config);
