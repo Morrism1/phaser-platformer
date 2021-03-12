@@ -8,7 +8,8 @@
     "start": "webpack serve --config webpack/webpack.dev.js --progress --profile",
     "build": "webpack --config webpack/webpack.prod.js",
     "bundle": "npm run build",
-    "serve": "serve dist"
+    "serve": "serve dist",
+    "test": "jest"
   },
   "keywords": [
     "Phaser",
@@ -26,6 +27,7 @@
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/plugin-transform-runtime": "^7.13.10",
     "@babel/preset-env": "^7.13.5",
+    "@types/jest": "^26.0.20",
     "babel-eslint": "10.1.x",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^3.0.0",
@@ -35,6 +37,7 @@
     "eslint-plugin-import": "2.20.x",
     "html-webpack-plugin": "^5.2.0",
     "javascript-obfuscator": "^2.10.7",
+    "jest": "^26.6.3",
     "serve": "^11.3.2",
     "stylelint": "13.3.x",
     "stylelint-config-standard": "20.0.x",
