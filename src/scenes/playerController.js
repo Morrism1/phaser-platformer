@@ -10,6 +10,8 @@ export default class PlayerController {
     this.cursors = cursors;
     this.obstacles = obstacles;
     this.scene = scene;
+    this.jumps = 0;
+    this.sprite.jumping = false;
     this.createAnimations();
     this.stateMachine = new StateMachine(this, 'player');
     this.stateMachine
@@ -123,6 +125,7 @@ export default class PlayerController {
 
   jumpOnEnter() {
     this.sprite.setVelocityY(-12);
+    this.jumps = 0;
   }
 
   jumpOnUpdate() {
@@ -133,6 +136,16 @@ export default class PlayerController {
     } else if (this.cursors.right.isDown) {
       this.sprite.flipX = false;
       this.sprite.setVelocityX(spriteSpeed);
+    }
+
+    const jumpPressed = Phaser.Input.Keyboard.JustDown(this.cursors.space);
+
+    const pressed = jumpPressed || this.cursors.up.isDown;
+    this.sprite;
+    if (pressed && this.jumps < 2) {
+      this.sprite.setVelocityY(-12);
+      this.jumps += 1;
+      this.stateMachine.setState('idle');
     }
   }
 
@@ -155,7 +168,11 @@ export default class PlayerController {
           100,
           value,
         );
-        const color = Phaser.Display.Color.GetColor(colorObject.r, colorObject.g, colorObject.b);
+        const color = Phaser.Display.Color.GetColor(
+          colorObject.r,
+          colorObject.g,
+          colorObject.b,
+        );
         this.sprite.setTint(color);
       },
     });
