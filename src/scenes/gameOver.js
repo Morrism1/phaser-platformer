@@ -27,5 +27,10 @@ export default class GameOver extends Phaser.Scene {
         color: '#000000',
       })
       .setOrigin(0.5);
+
+    this.add.text(10, 10, '<--- Press SPACE to return to the Menu');
+    this.input.keyboard.on('keydown-SPACE', () => {
+      this.scene.start('title');
+    });
   }
 }

@@ -1,11 +1,12 @@
-import { Scene } from 'phaser'
+import { Scene } from 'phaser';
 
 export default class InputForm extends Scene {
   constructor() {
-    super('input')
+    super('input');
   }
+
   preload() {
-    this.load.html('form', 'assets/form.html')
+    this.load.html('form', 'assets/form.html');
   }
 
   create() {
@@ -13,20 +14,20 @@ export default class InputForm extends Scene {
       color: 'white',
       fontFamily: 'Arial',
       fontSize: '32px ',
-    })
+    });
     const element = this.add
       .dom(this.scale.width * 0.5, this.scale.height * 0.5)
-      .createFromCache('form')
+      .createFromCache('form');
 
-    element.addListener('click')
+    element.addListener('click');
     element.on('click', function ({ target }) {
       if (target.name === 'loginButton') {
-        const inputUsername = this.getChildByName('username')
+        const inputUsername = this.getChildByName('username');
 
         //  Have they entered anything?
         if (inputUsername.value !== '') {
           //  Turn off the click events
-          this.removeListener('click')
+          this.removeListener('click');
 
           //  Tween the login form out
           this.scene.tweens.add({
@@ -35,7 +36,7 @@ export default class InputForm extends Scene {
             w: 90,
             duration: 3000,
             ease: 'Power3',
-          })
+          });
 
           this.scene.tweens.add({
             targets: element,
@@ -45,18 +46,17 @@ export default class InputForm extends Scene {
             duration: 3000,
             ease: 'Power3',
             onComplete() {
-              element.setVisible(false)
+              element.setVisible(false);
             },
-          })
+          });
 
           //  Put the username! in the LocalStorage
 
-          let userName = inputUsername.value
+          const userName = inputUsername.value;
 
-          localStorage.setItem('userName', JSON.stringify(userName))
+          localStorage.setItem('userName', JSON.stringify(userName));
 
-          console.log(inputUsername.value, this)
-          this.scene.scene.start('preloader')
+          this.scene.scene.start('preloader');
         } else {
           //  Flash the prompt
           this.scene.tweens.add({
@@ -65,16 +65,16 @@ export default class InputForm extends Scene {
             duration: 200,
             ease: 'Power3',
             yoyo: true,
-          })
+          });
         }
       }
-    })
+    });
 
     this.tweens.add({
       targets: element,
       y: 300,
       duration: 3000,
       ease: 'Power3',
-    })
+    });
   }
 }

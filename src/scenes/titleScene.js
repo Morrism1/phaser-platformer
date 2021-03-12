@@ -1,14 +1,14 @@
-import Phaser from 'phaser'
-import Button from '../stateMachine/button'
+import Phaser from 'phaser';
+import Button from '../stateMachine/button';
 
 const config = {
   width: 1200,
   height: 800,
-}
+};
 
 export default class TitleScene extends Phaser.Scene {
   constructor() {
-    super('title')
+    super('title');
   }
 
   create() {
@@ -19,8 +19,8 @@ export default class TitleScene extends Phaser.Scene {
       'blueButton1',
       'blueButton2',
       'Play',
-      'game'
-    )
+      'game',
+    );
 
     // Options
     this.optionsButton = new Button(
@@ -29,9 +29,9 @@ export default class TitleScene extends Phaser.Scene {
       config.height / 2,
       'blueButton1',
       'blueButton2',
-      'Options',
-      'options'
-    )
+      'LeaderBoard',
+      'leaderboard',
+    );
 
     // Credits
     this.creditsButton = new Button(
@@ -41,26 +41,31 @@ export default class TitleScene extends Phaser.Scene {
       'blueButton1',
       'blueButton2',
       'Credits',
-      'credits'
-    )
+      'credits',
+    );
 
-    this.input.on('pointerover', function (event, gameObjects) {
-      gameObjects[0].setTexture('blueButton2')
-    })
+    this.input.on('pointerover', (event, gameObjects) => {
+      gameObjects[0].setTexture('blueButton2');
+    });
 
-    this.input.on('pointerout', function (event, gameObjects) {
-      gameObjects[0].setTexture('blueButton1')
-    })
+    this.input.on('pointerout', (event, gameObjects) => {
+      gameObjects[0].setTexture('blueButton1');
+    });
   }
 
   centerButton(gameObject, offset = 0) {
     Phaser.Display.Align.In.Center(
       gameObject,
-      this.add.zone(config.width / 2, config.height / 2 - offset * 100, config.width, config.height)
-    )
+      this.add.zone(
+        config.width / 2,
+        config.height / 2 - offset * 100,
+        config.width,
+        config.height,
+      ),
+    );
   }
 
   centerButtonText(gameText, gameButton) {
-    Phaser.Display.Align.In.Center(gameText, gameButton)
+    Phaser.Display.Align.In.Center(gameText, gameButton);
   }
 }

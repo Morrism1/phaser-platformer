@@ -17,7 +17,11 @@
     "arrow-parens": "off",
     "no-void": "off",
     "no-underscore-dangle":"off",
-    "no-cond-assign": "off"
+    "no-cond-assign": "off",
+    "no-unused-expressions": "off",
+    "import/prefer-default-export": "off",
+    "class-methods-use-this": "off",
+    "func-names": "off"
   },
   "ignorePatterns": [
     "dist/",

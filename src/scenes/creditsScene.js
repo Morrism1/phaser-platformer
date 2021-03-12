@@ -1,29 +1,39 @@
 // @ts-nocheck
-import Phaser from 'phaser'
+import Phaser from 'phaser';
 
 const config = {
   width: 1200,
   height: 800,
-}
+};
 
 export default class CreditsScene extends Phaser.Scene {
   constructor() {
-    super('credits')
+    super('credits');
   }
 
   create() {
-    this.creditsText = this.add.text(0, 0, 'Credits', { fontSize: '32px', fill: '#fff' })
-    this.madeByText = this.add.text(0, 0, 'Created By: Placeholder', {
-      fontSize: '26px',
-      fill: '#fff',
-    })
-    this.zone = this.add.zone(config.width / 2, config.height / 2, config.width, config.height)
+    this.creditsText = this.add.text(0, 0, 'Credits', { fontSize: '32px', fill: '#fff' });
+    this.madeByText = this.add.text(
+      0,
+      0,
+      'Created By: Maurice Murangwa, Thanks to Ourcade and Kenney',
+      {
+        fontSize: '26px',
+        fill: '#fff',
+      },
+    );
+    this.zone = this.add.zone(
+      config.width / 2,
+      config.height / 2,
+      config.width,
+      config.height,
+    );
 
-    Phaser.Display.Align.In.Center(this.creditsText, this.zone)
+    Phaser.Display.Align.In.Center(this.creditsText, this.zone);
 
-    Phaser.Display.Align.In.Center(this.madeByText, this.zone)
+    Phaser.Display.Align.In.Center(this.madeByText, this.zone);
 
-    this.madeByText.setY(1000)
+    this.madeByText.setY(1000);
 
     this.creditsTween = this.tweens.add({
       targets: this.creditsText,
@@ -32,9 +42,9 @@ export default class CreditsScene extends Phaser.Scene {
       duration: 3000,
       delay: 1000,
       onComplete() {
-        this.destroy()
+        this.destroy;
       },
-    })
+    });
 
     this.madeByTween = this.tweens.add({
       targets: this.madeByText,
@@ -43,9 +53,9 @@ export default class CreditsScene extends Phaser.Scene {
       duration: 8000,
       delay: 1000,
       onComplete: () => {
-        this.madeByTween.destroy
-        this.scene.start('title')
+        this.madeByTween.destroy;
+        this.scene.start('title');
       },
-    })
+    });
   }
 }

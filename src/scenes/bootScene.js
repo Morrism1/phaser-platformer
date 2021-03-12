@@ -1,15 +1,15 @@
-import Phaser from 'phaser'
+import Phaser from 'phaser';
 
 export default class BootScene extends Phaser.Scene {
   constructor() {
-    super('boot')
+    super('boot');
   }
 
   preload() {
-    this.load.image('logo', 'assets/kimLogo.png')
+    this.load.image('logo', 'assets/kimLogo.png');
   }
 
   create() {
-    this.scene.start('input')
+    this.scene.start('input');
   }
 }
