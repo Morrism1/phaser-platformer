@@ -1,14 +1,13 @@
-const path = require('path');
-const { merge } = require('webpack-merge');
-const WebpackObfuscator = require('webpack-obfuscator');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const common = require('./webpack.common');
+const path = require('path')
+const { merge } = require('webpack-merge')
+const WebpackObfuscator = require('webpack-obfuscator')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const common = require('./webpack.common')
 
 const prod = {
   mode: 'production',
   output: {
     filename: '[name].[contenthash].bundle.js',
-    chunkFilename: '[name].[contenthash].chunk.js',
   },
   optimization: {
     splitChunks: {
@@ -20,7 +19,9 @@ const prod = {
     },
   },
   plugins: [
-    new CleanWebpackPlugin({ cleanOnceBeforeBuildPatterns: [path.resolve(__dirname, '../dist/*.js')] }),
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: [path.resolve(__dirname, '../dist/*.js')],
+    }),
     new WebpackObfuscator(
       {
         rotateStringArray: true,
@@ -28,9 +29,9 @@ const prod = {
         // stringArrayEncoding: 'base64', // disabled by default
         stringArrayThreshold: 0.75,
       },
-      ['vendors.*.js'],
+      ['vendors.*.js']
     ),
   ],
-};
+}
 
-module.exports = merge(common, prod);
+module.exports = merge(common, prod)

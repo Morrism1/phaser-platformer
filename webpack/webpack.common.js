@@ -1,14 +1,13 @@
-const path = require('path');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { InjectManifest } = require('workbox-webpack-plugin');
+const path = require('path')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { InjectManifest } = require('workbox-webpack-plugin')
 
 module.exports = {
   entry: { index: './src/index.js' },
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: '[name].bundle.js',
-    chunkFilename: '[name].chunk.js',
   },
   resolve: {
     extensions: ['.js'],
@@ -40,4 +39,4 @@ module.exports = {
     //   swSrc: path.resolve(__dirname, '../pwa/sw.js'),
     // }),
   ],
-};
+}
