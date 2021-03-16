@@ -1,0 +1,28 @@
+// 20210316131029
+// https://raw.githubusercontent.com/microverseinc/linters-config/master/javascript/.eslintrc.json
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest": true
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "extends": [
+    "airbnb-base"
+  ],
+  "rules": {
+    "no-shadow": "off",
+    "no-cond-assign": "off",
+    "no-param-reassign": "off",
+    "eol-last": "off",
+    "arrow-parens": "off"
+  },
+  "ignorePatterns": [
+    "dist/",
+    "build/"
+  ]
+}
