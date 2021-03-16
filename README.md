@@ -23,23 +23,22 @@ This is a platformer game Built with Phaser 3. I designed the character using Te
 
 To get a local copy of it and run it, follow these simple example steps.
 
-- git clone [Repo](https://github.com/Morrism1/phaser-platformer)
+- Git clone [Repo](https://github.com/Morrism1/phaser-platformer)
 
-- git checkout to your favorite branch and create a pull request if you want to add a new feature.
+- Change the directory by `cd phaser-platformer`.
+
+- Git checkout to your favorite branch and create a pull request if you want to add a new feature.
+
+- Run `npm start` to start the development server.
 
 ### Prerequisites
 
-- code editor
+- Code editor
 - Browser
 
 ### Usage
 
 Accessing the application requires a running server. This can easily be achieved from the project's root directory by running first `npm install` to install required dependencies and later `npm start` to start the server. The app will now be accessible at the following URL: `http://localhost:8080/`.
-
-### Setup
-
-- install code editor
-- Browser
 
 ## Testing
 
