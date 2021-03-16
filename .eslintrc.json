@@ -1,8 +1,9 @@
+// 20210316131029
+// https://raw.githubusercontent.com/microverseinc/linters-config/master/javascript/.eslintrc.json
 {
   "env": {
     "browser": true,
     "es6": true,
-    "node": true,
     "jest": true
   },
   "parser": "babel-eslint",
@@ -15,21 +16,13 @@
   ],
   "rules": {
     "no-shadow": "off",
+    "no-cond-assign": "off",
     "no-param-reassign": "off",
     "eol-last": "off",
-    "arrow-parens": "off",
-    "no-void": "off",
-    "no-underscore-dangle": "off",
-    "no-cond-assign": "off",
-    "no-unused-expressions": "off",
-    "import/prefer-default-export": "off",
-    "class-methods-use-this": "off",
-    "func-names": "off"
+    "arrow-parens": "off"
   },
   "ignorePatterns": [
     "dist/",
-    "build/",
-    "pwa/",
-    "webpack/"
+    "build/"
   ]
 }
