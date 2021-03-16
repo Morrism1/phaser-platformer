@@ -19,8 +19,9 @@ export default class LeaderboardScene extends Scene {
 
     const createScores = (scores) => {
       const { width, height } = this.scale;
-      const lastPosition = { x: width / 2, y: height * 0.35 };
-      if (scores) {
+      const lastPosition = { x: width / 2, y: height * 0.15 };
+
+      if (scores.length) {
         scores.forEach((result, index) => {
           this.add
             .text(
