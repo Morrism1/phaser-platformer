@@ -1,14 +1,14 @@
-import Phaser from 'phaser';
-import Button from '../stateMachine/button';
+import Phaser from 'phaser'
+import Button from '../stateMachine/button'
 
 const config = {
   width: 1200,
   height: 800,
-};
+}
 
 export default class TitleScene extends Phaser.Scene {
   constructor() {
-    super('title');
+    super('title')
   }
 
   create() {
@@ -19,10 +19,9 @@ export default class TitleScene extends Phaser.Scene {
       'blueButton1',
       'blueButton2',
       'Play',
-      'game',
-    );
+      'game'
+    )
 
-    // Options
     this.optionsButton = new Button(
       this,
       config.width / 2,
@@ -30,10 +29,9 @@ export default class TitleScene extends Phaser.Scene {
       'blueButton1',
       'blueButton2',
       'LeaderBoard',
-      'leaderboard',
-    );
+      'leaderboard'
+    )
 
-    // Credits
     this.creditsButton = new Button(
       this,
       config.width / 2,
@@ -41,16 +39,16 @@ export default class TitleScene extends Phaser.Scene {
       'blueButton1',
       'blueButton2',
       'Credits',
-      'credits',
-    );
+      'credits'
+    )
 
     this.input.on('pointerover', (event, gameObjects) => {
-      gameObjects[0].setTexture('blueButton2');
-    });
+      gameObjects[0].setTexture('blueButton2')
+    })
 
     this.input.on('pointerout', (event, gameObjects) => {
-      gameObjects[0].setTexture('blueButton1');
-    });
+      gameObjects[0].setTexture('blueButton1')
+    })
   }
 
   centerButton(gameObject, offset = 0) {
@@ -60,12 +58,12 @@ export default class TitleScene extends Phaser.Scene {
         config.width / 2,
         config.height / 2 - offset * 100,
         config.width,
-        config.height,
-      ),
-    );
+        config.height
+      )
+    )
   }
 
   centerButtonText(gameText, gameButton) {
-    Phaser.Display.Align.In.Center(gameText, gameButton);
+    Phaser.Display.Align.In.Center(gameText, gameButton)
   }
 }
