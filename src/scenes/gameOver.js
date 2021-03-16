@@ -22,8 +22,21 @@ export default class GameOver extends Phaser.Scene {
         this.scene.start('game');
       });
 
+    const scoreButton = this.add
+      .rectangle(width * 0.5, height * 0.75, 150, 75, 0xffffff)
+      .setInteractive()
+      .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => {
+        this.scene.start('leaderboard');
+      });
+
     this.add
       .text(button.x, button.y, 'Play Again', {
+        color: '#000000',
+      })
+      .setOrigin(0.5);
+
+    this.add
+      .text(scoreButton.x, scoreButton.y, 'LeaderBoard', {
         color: '#000000',
       })
       .setOrigin(0.5);
