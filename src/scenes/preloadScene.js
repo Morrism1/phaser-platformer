@@ -80,7 +80,7 @@ export default class PreloadScene extends Phaser.Scene {
       loadingText.destroy();
       percentText.destroy();
       assetText.destroy();
-      this.ready;
+      this.ready();
     });
 
     this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
@@ -95,6 +95,4 @@ export default class PreloadScene extends Phaser.Scene {
     this.load.image('blueButton2', 'assets/blue_button03.png');
     this.load.image('background', 'assets/background.jpg');
   }
-
-  create() {}
 }

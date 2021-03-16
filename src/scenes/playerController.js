@@ -25,7 +25,7 @@ export default class PlayerController {
       .setState('idle');
 
     this.sprite.setOnCollide((data) => {
-      let _a;
+      let a;
       const body = data.bodyB;
       if (this.obstacles.is('spikes', body)) {
         this.stateMachine.setState('spike-hit');
@@ -51,7 +51,10 @@ export default class PlayerController {
       }
 
       if (type === 'health') {
-        const value = (_a = sprite.getData('healthValue')) !== null && _a !== void 0 ? _a : 10;
+        a = sprite.getData('healthValue');
+        const value = a !== null && a !== undefined
+          ? a
+          : 10;
         this.health = Phaser.Math.Clamp(this.health + value, 0, 100);
         events.emit('health-changed', this.health);
         sprite.destroy();
@@ -74,7 +77,7 @@ export default class PlayerController {
 
   deadOnEnter() {
     this.sprite.play('player-die');
-    this.sprite.setOnCollide(() => {});
+    this.sprite.setOnCollide(() => { });
     this.scene.time.delayedCall(1500, () => {
       this.scene.scene.start('game-over');
       this.setHealth(100);
@@ -141,7 +144,7 @@ export default class PlayerController {
     const jumpPressed = Phaser.Input.Keyboard.JustDown(this.cursors.space);
 
     const pressed = jumpPressed || this.cursors.up.isDown;
-    this.sprite;
+
     if (pressed && this.jumps < 2) {
       this.sprite.setVelocityY(-12);
       this.jumps += 1;

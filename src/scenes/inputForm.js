@@ -20,7 +20,7 @@ export default class InputForm extends Scene {
       .createFromCache('form');
 
     element.addListener('click');
-    element.on('click', function ({ target }) {
+    element.on('click', function handler({ target }) {
       if (target.name === 'loginButton') {
         const inputUsername = this.getChildByName('username');
 

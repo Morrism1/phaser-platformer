@@ -1,3 +1,6 @@
+// @ts-nocheck
+/* eslint-disable */
+
 const path = require('path')
 const { merge } = require('webpack-merge')
 const WebpackObfuscator = require('webpack-obfuscator')

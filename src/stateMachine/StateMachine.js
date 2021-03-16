@@ -5,7 +5,7 @@ export default class StateMachine {
     this.states = new Map();
     this.isChangingState = false;
     this.changeStateQueue = [];
-    this.id = id !== null && id !== void 0 ? id : this.id;
+    this.id = id !== null && id !== undefined ? id : this.id;
     this.context = context;
   }
 
@@ -24,28 +24,29 @@ export default class StateMachine {
   }
 
   addState(name, config) {
-    let _a;
-    let _b;
-    let _c;
+    let a;
+    let b;
+    let c;
     const { context } = this;
+
 
     this.states.set(name, {
       name,
       onEnter:
-        (_a = config === null || config === void 0 ? void 0 : config.onEnter) === null
-        || _a === void 0
-          ? void 0
-          : _a.bind(context),
+        (a = config === null || config === undefined ? undefined : config.onEnter)
+          === null || a === undefined
+          ? undefined
+          : a.bind(context),
       onUpdate:
-        (_b = config === null || config === void 0 ? void 0 : config.onUpdate) === null
-        || _b === void 0
-          ? void 0
-          : _b.bind(context),
+        (b = config === null || config === undefined ? undefined : config.onUpdate)
+          === null || b === undefined
+          ? undefined
+          : b.bind(context),
       onExit:
-        (_c = config === null || config === void 0 ? void 0 : config.onExit) === null
-        || _c === void 0
-          ? void 0
-          : _c.bind(context),
+        (c = config === null || config === undefined ? undefined : config.onExit)
+          === null || c === undefined
+          ? undefined
+          : c.bind(context),
     });
     return this;
   }

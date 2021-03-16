@@ -1,7 +1,7 @@
+/* eslint-disable */
 const path = require('path')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { InjectManifest } = require('workbox-webpack-plugin')
 
 module.exports = {
   entry: { index: './src/index.js' },
@@ -30,13 +30,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({ gameName: 'My Phaser Game', template: 'src/index.html' }),
     new CopyWebpackPlugin({
-      patterns: [
-        { from: 'src/assets', to: 'assets' },
-        { from: 'pwa', to: '' },
-      ],
+      patterns: [{ from: 'src/assets', to: 'assets' }],
     }),
-    // new InjectManifest({
-    //   swSrc: path.resolve(__dirname, '../pwa/sw.js'),
-    // }),
   ],
 }

@@ -55,6 +55,7 @@
     "@babel/polyfill": "^7.10.4",
     "axios": "^0.21.1",
     "phaser": "^3.52.0",
-    "phaser3-rex-plugins": "^1.1.41"
+    "phaser3-rex-plugins": "^1.1.41",
+    "workbox-precaching": "^6.1.2"
   }
 }
