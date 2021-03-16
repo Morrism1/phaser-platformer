@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const gameID = '4exngDUI9ivmz2c86hbt';
-const baseUrl = `https://cors-anywhere.herokuapp.com/https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameID}/scores/`;
+const baseUrl = `https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameID}/scores/`;
 
 const postUserScores = async (data) => {
   const req = await axios
